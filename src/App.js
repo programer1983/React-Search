@@ -13,7 +13,13 @@ function App() {
         placeholder='Search...'
         onChange={(e) => {setSearchTerm(e.target.value)}}
       />
-      {JESONDATA.map((val, key) => {
+      {JESONDATA.filter((val) => {
+        if(searchTerm === ""){
+          return val
+        }else if (val.first_name.toLowerCase().includes(searchTerm.toLowerCase())) {
+          return val
+        }
+      }).map((val, key) => {
         return (
           <div className="user" key={key.id}><p>{val.first_name}</p></div>
         ) 

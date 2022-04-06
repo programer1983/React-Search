@@ -1,10 +1,18 @@
 import JESONDATA from "./MOCK_DATA .json"
+import {useState} from "react"
 import './App.css';
 
 function App() {
+  const [searchTerm, setSearchTerm] = useState("")
+  
+  
   return (
     <div className="App">
-      <input type="text" placeholder='Search...'/>
+      <input 
+        type="text" 
+        placeholder='Search...'
+        onChange={(e) => {setSearchTerm(e.target.value)}}
+      />
       {JESONDATA.map((val, key) => {
         return (
           <div className="user" key={key.id}><p>{val.first_name}</p></div>
